@@ -1,22 +1,27 @@
 class Stack:
+    EMPTY_STACK_ERROR = "the stack is empty."
+
     def __init__(self):
-        self.items = []
+        self._items = []
 
     def push(self, item):
-        self.items.append(item)
+        self._items.append(item)
 
     def pop(self):
         if self.is_empty():
-            raise IndexError("the stack is empty.")
-        return self.items.pop()
+            raise IndexError(self.EMPTY_STACK_ERROR)
+        return self._items.pop()
 
     def peek(self):
         if self.is_empty():
-            raise IndexError("the stack is empty.")
-        return self.items[-1]
+            raise IndexError(self.EMPTY_STACK_ERROR)
+        return self._items[-1]
 
     def is_empty(self):
-        return len(self.items) == 0
+        return len(self._items) == 0
+
+    def __repr__(self):
+        return str(self._items)
 
 
 def main():
@@ -25,14 +30,14 @@ def main():
     for letter in "AMITABH":
         stack.push(letter)
 
-    print(f"Original stack: {stack.items}")
+    print(f"Original stack: {stack}")
     print(f"Top item: {stack.peek()}")
 
     reversed_letters = []
     while not stack.is_empty():
         reversed_letters.append(stack.pop())
 
-    print(f"Empty stack: {stack.items}")
+    print(f"Empty stack: {stack}")
     print(f"Reversed name: {''.join(reversed_letters)}")
 
     try:
