@@ -19,22 +19,27 @@ class Stack:
         return len(self.items) == 0
 
 
-stack = Stack()
+def main():
+    stack = Stack()
 
-for letter in "AMITABH":
-    stack.push(letter)
+    for letter in "AMITABH":
+        stack.push(letter)
 
-print(f"Original stack: {stack.items}")
-print(f"Top item: {stack.peek()}")
+    print(f"Original stack: {stack.items}")
+    print(f"Top item: {stack.peek()}")
 
-reversed_letters = []
-while not stack.is_empty():
-    reversed_letters.append(stack.pop())
+    reversed_letters = []
+    while not stack.is_empty():
+        reversed_letters.append(stack.pop())
 
-print(f"Empty stack: {stack.items}")
-print(f"Reversed name: {''.join(reversed_letters)}")
+    print(f"Empty stack: {stack.items}")
+    print(f"Reversed name: {''.join(reversed_letters)}")
 
-try:
-    stack.pop()
-except IndexError as error:
-    print(f"Cannot pop: {error}")
+    try:
+        stack.pop()
+    except IndexError as error:
+        print(f"Cannot pop: {error}")
+
+
+if __name__ == "__main__":
+    main()
