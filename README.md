@@ -62,7 +62,7 @@ This project is a static Vite build and can be deployed to any static host:
 - **Vercel**: import the GitHub repo — Vercel auto-detects the Vite framework preset.
 - **Render**: create a Static Site, build command `npm run build`, publish directory `dist`.
 
-Live site: _add your deployed URL here after publishing_.
+Live site: [amitabh-portfolio-nu.vercel.app](https://amitabh-portfolio-nu.vercel.app)
 
 ## Notes
 
