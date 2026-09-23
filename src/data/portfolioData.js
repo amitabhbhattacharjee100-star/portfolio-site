@@ -2,9 +2,10 @@
 
 export const personalInfo = {
   fullName: 'Amitabh Bhattacharjee',
-  tagline: 'Software Engineering — AI Student & Builder',
+  headline:
+    'Software Engineering Technology — Artificial Intelligence Student at Centennial College | Student Innovation & Entrepreneurship Ambassador at COIE',
+  tagline: 'AI • Python • React • Software Development • Project Management',
   email: 'amitabhbhattacharjee100@gmail.com',
-  phone: '+1 (647) 839-6927',
   location: 'Scarborough, Ontario, Canada',
   linkedin: 'https://linkedin.com/in/amitabh-bhattacharjee-6541b33b7',
   github: 'https://github.com/amitabhbhattacharjee100',
@@ -12,45 +13,107 @@ export const personalInfo = {
   missionStatement:
     'I build practical, human-centred software — from responsive web apps to AI-powered agents — and pair it with an entrepreneurial mindset to turn ideas into working products.',
   summary:
-    'Motivated full-time Software Engineering — AI student at Centennial College, returning to studies in Fall 2026 (Expected Graduation: April 2028). Winner of Centennial College\u2019s AI Agents Hackathon 2026 and recognized as a COIE Student Innovation & Entrepreneurship Ambassador and Digital Influencer. Skilled in web development, programming fundamentals (C#, .NET, JavaScript, HTML/CSS, Python, Bash), AI/ML tools, and technology innovation.',
+    'I am a Software Engineering Technology — Artificial Intelligence student at Centennial College with a strong interest in artificial intelligence, software development, project management, entrepreneurship, and business technology. I enjoy building practical technology projects and learning how AI can be used to solve real-world problems, with experience in Python, web development, React, databases, AI concepts, software engineering, and collaborative project work.',
+  secondarySummary:
+    'I currently serve as a Student Innovation & Entrepreneurship Ambassador with the Centre of Innovation and Entrepreneurship (COIE), supporting student innovation, entrepreneurship, and technology-focused initiatives. I have also participated in AI-focused hackathons, giving me experience working under deadlines, solving problems, collaborating with others, and presenting technical ideas.',
 };
+
+export const openToRoles = [
+  'Software Developer Intern',
+  'Software Engineering Intern',
+  'AI Intern',
+  'Technology Intern',
+  'Project Management Intern',
+  'Business Technology Intern',
+  'Data Analyst Intern',
+  'Junior Developer',
+  'Web Developer Intern',
+  'IT / Technical Support',
+  'Innovation Intern',
+  'FinTech Intern',
+];
+
+export const skills = [
+  'Artificial Intelligence',
+  'Python',
+  'Software Development',
+  'React.js',
+  'JavaScript',
+  'HTML',
+  'CSS',
+  'Git',
+  'GitHub',
+  'SQL',
+  'Database Management',
+  'Software Engineering',
+  'Object-Oriented Programming',
+  'Web Development',
+  'Problem Solving',
+  'Project Management',
+  'Teamwork',
+  'Communication',
+  'Leadership',
+  'Entrepreneurship',
+  'Innovation',
+  'Customer Service',
+];
+
+export const experience = [
+  {
+    id: 'coie-ambassador',
+    role: 'Student Innovation & Entrepreneurship Ambassador',
+    organization: 'Centre of Innovation and Entrepreneurship (COIE), Centennial College',
+    dates: 'Current',
+    bullets: [
+      'Support student innovation and entrepreneurship initiatives at Centennial College.',
+      'Promote programs, workshops, events, and opportunities available through COIE.',
+      'Engage with students interested in entrepreneurship, innovation, startups, and technology.',
+      'Collaborate with students and staff to increase participation in innovation-focused activities.',
+      'Develop communication, leadership, networking, and event-support experience.',
+    ],
+  },
+  {
+    id: 'dollarama',
+    role: 'Team Member / Store Associate',
+    organization: 'Dollarama',
+    dates: 'Ontario, Canada',
+    bullets: [
+      'Assist customers and provide friendly and efficient service.',
+      'Support daily store operations, merchandising, stocking, and organization.',
+      'Work effectively with team members in a fast-paced retail environment.',
+      'Maintain accuracy, responsibility, and professionalism during assigned duties.',
+      'Develop customer service, communication, teamwork, and time-management skills.',
+    ],
+  },
+];
 
 export const projects = [
   {
-    id: 'ai-agents-hackathon',
-    title: 'AI Agents Hackathon 2026 (Winner)',
-    role: 'Team Builder & AI Engineer',
-    description:
-      'Designed and built an AI-powered agent to solve a real-world problem, applying machine learning, automation, and software development in a team-based competition.',
-    outcome: 'Won 1st place and was recognized for innovation, teamwork, and rapid prototyping.',
-    accent: '#f2a154',
-  },
-  {
-    id: 'responsive-web-suite',
-    title: 'Responsive Web Development Suite',
+    id: 'react-portfolio',
+    title: 'React Developer Portfolio',
     role: 'Front-End Developer',
     description:
-      'Developed responsive websites using HTML, CSS, and JavaScript, applying front-end development principles to create user-friendly interfaces.',
-    outcome: 'Delivered multiple accessible, mobile-first sites showcasing layout and UX fundamentals.',
+      'Created and deployed a personal portfolio using React to showcase software development projects, technical skills, education, and professional experience.',
+    outcome: 'Live, deployed site built with React, JavaScript, HTML, CSS, GitHub, and Vercel.',
     accent: '#3f7d6e',
   },
   {
-    id: 'dotnet-console-toolkit',
-    title: 'C# / .NET Console Application Toolkit',
-    role: 'Software Developer',
+    id: 'ai-agent-project',
+    title: 'AI Agent Project',
+    role: 'AI Developer',
     description:
-      'Built console applications using C# and .NET, practicing object-oriented programming, debugging, and software design concepts.',
-    outcome: 'Strengthened core software engineering fundamentals and clean-code practices.',
+      'Developed an intelligent agent using Python and explored agent behaviour, environment interaction, conditions, and automated decision-making.',
+    outcome: 'Strengthened applied Python, AI reasoning, and problem-solving skills.',
     accent: '#5a4fcf',
   },
   {
-    id: 'ai-automation-research',
-    title: 'AI & Automation Research Workflows',
-    role: 'Researcher & Prototyper',
+    id: 'ai-agents-hackathon',
+    title: 'AI Agents Hackathon (Winner)',
+    role: 'Team Builder & AI Engineer',
     description:
-      'Explored AI-powered development tools and automation workflows, researching technology solutions to improve productivity and efficiency.',
-    outcome: 'Identified automation opportunities that streamline repetitive development tasks.',
-    accent: '#c1445e',
+      'Participated in a Centennial College AI-focused hackathon involving artificial intelligence, teamwork, problem solving, and rapid solution development.',
+    outcome: 'Won 1st place; developed AI, innovation, teamwork, presentation, and rapid prototyping skills.',
+    accent: '#f2a154',
   },
 ];
 
@@ -59,17 +122,20 @@ export const education = [
     id: 'centennial',
     school: 'Centennial College',
     location: 'Ontario, Canada',
-    credential: 'Software Engineering — Artificial Intelligence',
+    credential: 'Software Engineering Technology — Artificial Intelligence',
     dates: 'Expected Graduation: April 2028',
     details: [
-      'HTML & CSS',
-      'JavaScript',
-      'C#',
-      '.NET Development',
-      'Bash Scripting',
-      'Client-Side Web Development',
-      'Artificial Intelligence Fundamentals',
-      'Machine Learning',
+      'Artificial Intelligence',
+      'Python Programming',
+      'Software Engineering',
+      'Web Development',
+      'React',
+      'Database Concepts',
+      'Object-Oriented Programming',
+      'Data Structures',
+      'Statistics and Linear Algebra',
+      'Software Testing',
+      'Systems Analysis',
     ],
   },
   {
@@ -102,28 +168,28 @@ export const services = [
     id: 'web-development',
     title: 'Web Development',
     description:
-      'Responsive, accessible websites built with HTML5, CSS3, and JavaScript, focused on clean layouts and user-friendly interfaces.',
+      'Responsive, accessible websites built with HTML5, CSS3, JavaScript, and React, focused on clean layouts and user-friendly interfaces.',
     icon: '🌐',
   },
   {
     id: 'software-development',
-    title: 'Software Development & Debugging',
+    title: 'Software Development',
     description:
-      'C# and .NET console and desktop applications built on solid object-oriented programming and software design fundamentals.',
+      'Python and object-oriented application development built on solid software engineering and testing fundamentals.',
     icon: '🛠️',
   },
   {
     id: 'ai-automation',
     title: 'AI & Automation Solutions',
     description:
-      'AI-powered agents and workflow automation that apply machine learning fundamentals to real-world problems.',
+      'AI-powered agents and workflow automation that apply artificial intelligence fundamentals to real-world problems.',
     icon: '🤖',
   },
   {
-    id: 'tech-consulting',
-    title: 'Technology & Business Consulting',
+    id: 'project-consulting',
+    title: 'Project Management & Business Technology',
     description:
-      'Rapid prototyping and digital business model guidance for startups, informed by entrepreneurship program experience.',
+      'Rapid prototyping, project coordination, and digital business model guidance informed by entrepreneurship program experience.',
     icon: '💡',
   },
 ];

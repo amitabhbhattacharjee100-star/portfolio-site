@@ -1,3 +1,10 @@
+.about-headline {
+  font-weight: 600;
+  color: var(--color-ink-soft);
+  max-width: 760px;
+  margin-bottom: 2rem;
+}
+
 .about-grid {
   display: grid;
   grid-template-columns: 260px 1fr;
@@ -31,4 +38,74 @@
   .about-photo {
     max-width: 260px;
   }
+}
+
+.about-subsection {
+  margin-top: 3rem;
+}
+
+.about-subsection h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.experience-card {
+  padding: 1.75rem;
+  border-left: 4px solid var(--color-accent);
+}
+
+.experience-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.experience-dates {
+  font-weight: 700;
+  color: var(--color-accent-dark);
+  white-space: nowrap;
+}
+
+.experience-org {
+  font-weight: 700;
+  color: var(--color-ink-soft);
+  margin-bottom: 0.75rem;
+}
+
+.experience-card ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--color-ink-soft);
+  display: grid;
+  gap: 0.35rem;
+}
+
+.pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: var(--color-ink);
+  color: #fffaf3;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.pill-outline {
+  background: transparent;
+  border: 1.5px solid var(--color-border);
+  color: var(--color-ink-soft);
 }

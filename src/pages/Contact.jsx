@@ -47,9 +47,6 @@ function Contact() {
               <strong>Email:</strong> <a href={`mailto:${personalInfo.email}`}>{personalInfo.email}</a>
             </li>
             <li>
-              <strong>Phone:</strong> {personalInfo.phone}
-            </li>
-            <li>
               <strong>Location:</strong> {personalInfo.location}
             </li>
             <li>
@@ -63,6 +60,10 @@ function Contact() {
               <a href={personalInfo.github} target="_blank" rel="noreferrer">
                 {personalInfo.github.replace('https://', '')}
               </a>
+            </li>
+            <li>
+              <strong>Portfolio:</strong>{' '}
+              <a href="/">This site</a>
             </li>
           </ul>
         </aside>
