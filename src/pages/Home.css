@@ -1,0 +1,58 @@
+.success-banner {
+  background: #e5f3ea;
+  border: 1px solid #3f7d6e;
+  color: #245346;
+  padding: 0.9rem 1.25rem;
+  border-radius: 12px;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  max-width: 640px;
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  max-width: 900px;
+}
+
+.hero-lead {
+  max-width: 640px;
+  font-size: 1.1rem;
+  color: var(--color-ink-soft);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.mission-card {
+  padding: 2rem;
+  max-width: 720px;
+  border-top: 4px solid var(--color-accent);
+}
+
+.mission-card h2 {
+  font-size: 1.4rem;
+}
+
+.highlights {
+  padding-top: 0;
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.highlight-card {
+  padding: 1.75rem;
+  border-top: 4px solid var(--color-accent);
+}
+
+.highlight-link {
+  font-weight: 700;
+  text-decoration: none;
+}
