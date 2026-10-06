@@ -1,0 +1,51 @@
+{
+  "projects": [
+    {
+      "title": "React Developer Portfolio",
+      "description": "Created and deployed a personal portfolio using React to showcase software development projects, technical skills, education, and professional experience. Live, deployed site built with React, JavaScript, HTML, CSS, GitHub, and Vercel.",
+      "technologies": [
+        "React",
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ],
+      "link": "https://amitabh-portfolio-nu.vercel.app"
+    },
+    {
+      "title": "AI Agent Project",
+      "description": "Developed an intelligent agent using Python and explored agent behaviour, environment interaction, conditions, and automated decision-making. Strengthened applied Python, AI reasoning, and problem-solving skills.",
+      "technologies": [
+        "Python",
+        "AI"
+      ],
+      "link": ""
+    },
+    {
+      "title": "AI Agents Hackathon (Winner)",
+      "description": "Participated in a Centennial College AI-focused hackathon involving artificial intelligence, teamwork, problem solving, and rapid solution development. Won 1st place; developed AI, innovation, teamwork, presentation, and rapid prototyping skills.",
+      "technologies": [
+        "Python",
+        "AI"
+      ],
+      "link": ""
+    }
+  ],
+  "education": [
+    {
+      "school": "Centennial College",
+      "degree": "Software Engineering Technology — Artificial Intelligence",
+      "field": "Software Engineering and Artificial Intelligence",
+      "startDate": "",
+      "endDate": "",
+      "description": "Expected Graduation: April 2028. Artificial Intelligence, Python Programming, Software Engineering, Web Development, React, Database Concepts, Object-Oriented Programming, Data Structures, Statistics and Linear Algebra, Software Testing, Systems Analysis."
+    },
+    {
+      "school": "Winston Churchill Collegiate Institute",
+      "degree": "Ontario Secondary School Diploma (OSSD)",
+      "field": "Secondary Education",
+      "startDate": "",
+      "endDate": "",
+      "description": "Graduated. Advanced Functions, Calculus & Vectors, University English, Leadership Club, Volunteer Programs, Academic Excellence Recognition."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+.app-shell { max-width: 1200px; padding: 24px; }
+.topbar { background: #0a1626; border: 1px solid #26364b; box-shadow: none; }
+.topbar h1 { font-size: clamp(1.4rem, 4vw, 2.2rem); letter-spacing: -.02em; line-height: 1.2; }
+.nav-links { margin-bottom: 24px; }
+.content-grid { display: grid; grid-template-columns: 1fr; }
+.auth-card, .panel { background: #0a1626; border: 1px solid #26364b; box-shadow: none; color: #e8eef8; }
+.auth-card { max-width: 580px; margin: 36px auto; }
+.list-card { background: #07111e; border-color: #26364b; }
+.list-card p, .list-card small { color: #afbed1; }
+label { color: #dce6f4; }
+input, textarea { background: #07111e; color: #eef6ff; border-color: #26364b; }
+button { background: #67e8f9; color: #06111f; }
+button.danger { background: #a72f41; color: white; }
+button:disabled { opacity: .5; cursor: default; }
+.tag { color: #67e8f9; background: #153344; }
+.flash-message { background: #153344; color: #dce6f4; border-color: #32738b; }
+.page-section .container { width: 100%; }
+.footer { margin-top: 48px; padding: 0 20px; }
+.profile-large, .profile-placeholder { object-fit: cover; object-position: center top; }
+.panel li { margin-bottom: 8px; color: #afbed1; }
+@media(max-width:600px) { .app-shell { padding: 14px; } }

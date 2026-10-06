@@ -1,0 +1,13 @@
+const Icon = ({ size = 24, children, ...props }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>{children}</svg>;
+export const ArrowRight = (props) => <Icon {...props}><path d="M4 12h16m-6-6 6 6-6 6" /></Icon>;
+export const Code2 = (props) => <Icon {...props}><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-14-2 16" /></Icon>;
+export const Mail = (props) => <Icon {...props}><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></Icon>;
+export const MapPin = (props) => <Icon {...props}><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></Icon>;
+export const Download = (props) => <Icon {...props}><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></Icon>;
+export const Laptop = (props) => <Icon {...props}><rect x="4" y="3" width="16" height="13" rx="2"/><path d="M2 20h20"/></Icon>;
+export const Bot = (props) => <Icon {...props}><rect x="4" y="7" width="16" height="14" rx="3"/><path d="M12 3v4M8 12h1m6 0h1m-8 5h8"/></Icon>;
+export const BrainCircuit = Bot;
+export const Rocket = ArrowRight;
+export const Wrench = Code2;
+export const Github = Code2;
+export const Linkedin = Laptop;

@@ -1,6 +1,0 @@
-*.pdf -text binary
-*.jpg -text binary
-*.jpeg -text binary
-*.png -text binary
-*.ico -text binary
-* text=auto eol=lf

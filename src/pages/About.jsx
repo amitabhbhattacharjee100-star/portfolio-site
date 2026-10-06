@@ -1,74 +1,39 @@
-import profilePhoto from '../assets/profile.jpg';
-import { experience, openToRoles, personalInfo, skills } from '../data/portfolioData.js';
-import './About.css';
+import { Download, Github, Linkedin, Mail, MapPin } from '../components/Icons';
+import { personalInfo } from '../portfolioData.mjs';
 
-function About() {
+export default function About() {
   return (
-    <div className="section about-page">
-      <span className="eyebrow">About Me</span>
-      <h1 className="section-heading">{personalInfo.fullName}</h1>
-      <p className="about-headline">{personalInfo.headline}</p>
-
-      <div className="about-grid">
-        <img
-          src={profilePhoto}
-          alt={`Head and shoulders portrait of ${personalInfo.fullName}`}
-          className="about-photo"
-        />
-
-        <div className="about-copy">
-          <p>{personalInfo.summary}</p>
-          <p>{personalInfo.secondarySummary}</p>
-
-          <a href={personalInfo.resumeUrl} target="_blank" rel="noreferrer" className="btn btn-primary resume-link">
-            📄 View My Resume (PDF)
-          </a>
+    <section className="page-section">
+      <div className="container">
+        <div className="page-heading">
+          <p className="eyebrow">ABOUT ME</p>
+          <h1>Amitabh Bhattacharjee</h1>
+          <p>A student developer interested in software engineering, artificial intelligence, web development, entrepreneurship, and technology innovation.</p>
         </div>
-      </div>
-
-      <div className="about-subsection">
-        <h2>Experience</h2>
-        <div className="experience-list">
-          {experience.map((job) => (
-            <div key={job.id} className="experience-card card">
-              <div className="experience-header">
-                <h3>{job.role}</h3>
-                <span className="experience-dates">{job.dates}</span>
-              </div>
-              <p className="experience-org">{job.organization}</p>
-              <ul>
-                {job.bullets.map((bullet) => (
-                  <li key={bullet}>{bullet}</li>
-                ))}
-              </ul>
+        <div className="about-grid">
+          <div className="profile-panel">
+            <img className="profile-large" src="/profile.jpg" alt="Amitabh Bhattacharjee" />
+            
+          </div>
+          <div className="content-card">
+            <h2>Who I Am</h2>
+            <p>
+              {personalInfo.summary}
+            </p>
+            <p>
+              {personalInfo.secondarySummary}
+            </p>
+            <div className="contact-list">
+              <span><MapPin size={17}/> Scarborough, Ontario, Canada</span>
+              <a href="mailto:amitabhbhattacharjee100@gmail.com"><Mail size={17}/> Email me</a>
+              <a href="https://github.com/amitabhbhattacharjee100-star" target="_blank" rel="noreferrer"><Github size={17}/> GitHub</a>
+              <a href="https://linkedin.com/in/amitabh-bhattacharjee-6541b33b7" target="_blank" rel="noreferrer"><Linkedin size={17}/> LinkedIn</a>
             </div>
-          ))}
+            <a href="/resume.pdf" target="_blank" rel="noreferrer" className="btn btn-primary"><Download size={18}/> View Resume (PDF)</a>
+          </div>
         </div>
       </div>
-
-      <div className="about-subsection">
-        <h2>Skills</h2>
-        <div className="pill-group">
-          {skills.map((skill) => (
-            <span key={skill} className="pill">
-              {skill}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <div className="about-subsection">
-        <h2>Open to Opportunities</h2>
-        <div className="pill-group">
-          {openToRoles.map((role) => (
-            <span key={role} className="pill pill-outline">
-              {role}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
+    </section>
   );
 }
 
-export default About;
