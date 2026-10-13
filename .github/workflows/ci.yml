@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: 22
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
       - name: Run lint
         run: npm run lint
       - name: Run unit tests
@@ -27,7 +27,7 @@ jobs:
       - name: Run Cypress end-to-end tests
         uses: cypress-io/github-action@v6
         with:
-          install-command: npm install
+          install-command: npm install --legacy-peer-deps
           start: npm run preview -- --host 127.0.0.1 --port 4173
           wait-on: 'http://127.0.0.1:4173'
           browser: chrome
