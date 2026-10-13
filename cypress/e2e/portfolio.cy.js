@@ -7,7 +7,11 @@ describe('Portfolio website', () => {
     cy.contains('h1', /projects/i).should('be.visible');
   });
 
-  it('validates and submits the contact form', () => {
+  it('submits the Contact form through the API', () => {
+    cy.intercept('POST', '/api/contact', {
+      statusCode: 201,
+      body: { ok: true, message: 'Message saved successfully.' },
+    }).as('saveContact');
     cy.visit('/contact');
     cy.get('input[name="firstName"]').type('Test');
     cy.get('input[name="lastName"]').type('Student');
@@ -15,7 +19,9 @@ describe('Portfolio website', () => {
     cy.get('input[name="email"]').type('test@example.com');
     cy.get('textarea[name="message"]').type('This is a test message.');
     cy.contains('button', 'Send Message').click();
-    cy.location('pathname').should('eq', '/');
-    cy.get('[role="status"]').should('contain.text', 'Thanks, Test Student');
+    cy.wait('@saveContact').its('request.body').should('include', {
+      firstName: 'Test', lastName: 'Student', email: 'test@example.com',
+    });
+    cy.get('[role="status"]').should('contain.text', 'Thanks, Test');
   });
 });
