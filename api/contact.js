@@ -5,7 +5,6 @@ let cachedClientPromise;
 
 function getMongoClient() {
   if (!process.env.MONGODB_URI) throw new Error('MONGODB_URI is not configured');
-
   if (!cachedClientPromise) {
     const client = new MongoClient(process.env.MONGODB_URI, { serverSelectionTimeoutMS: 8000 });
     cachedClientPromise = client.connect().catch((error) => {
@@ -22,7 +21,6 @@ function cleanText(value, maxLength) {
 
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
-
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed.' });
@@ -40,9 +38,7 @@ export default async function handler(req, res) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return res.status(400).json({ error: 'Please enter a valid email address.' });
   }
-  if (message.length < 5) {
-    return res.status(400).json({ error: 'Please enter a longer message.' });
-  }
+  if (message.length < 5) return res.status(400).json({ error: 'Please enter a longer message.' });
 
   const databaseName = process.env.MONGODB_DB;
   if (!databaseName) {
@@ -52,11 +48,7 @@ export default async function handler(req, res) {
   try {
     const client = await getMongoClient();
     await client.db(databaseName).collection('contactMessages').insertOne({
-      firstName,
-      lastName,
-      contactNumber,
-      email,
-      message,
+      firstName, lastName, contactNumber, email, message,
       createdAt: new Date(),
       source: 'portfolio-contact-form',
     });
