@@ -41,7 +41,7 @@ export default async function handler(req, res) {
   if (message.length < 5) return res.status(400).json({ error: 'Please enter a longer message.' });
 
   const databaseName = process.env.MONGODB_DB;
-  if (!databaseName) {
+  if (!process.env.MONGODB_URI || !databaseName) {
     return res.status(503).json({ error: 'The contact service is not configured yet. Please try again later.' });
   }
 
