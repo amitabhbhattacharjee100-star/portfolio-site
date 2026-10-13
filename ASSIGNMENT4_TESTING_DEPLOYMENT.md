@@ -1,47 +1,48 @@
 # COMP229 Assignment 4 — Testing and Deployment
 
-This checklist supports the portfolio testing and deployment assignment. Record your own screenshots after running each step; do not submit screenshots that were not actually captured from your environment.
+## 1. MongoDB Atlas setup
 
-## 1. Install and verify
+1. Create a MongoDB Atlas project and a database named `portfolio`.
+2. Create a database user with a strong password. Give it read/write access only to the `portfolio` database.
+3. Configure Atlas Network Access for the deployment. Prefer restricted trusted IP access where available. For Vercel serverless functions without a fixed outbound IP, Atlas may require an IP access-list entry that permits Vercel access; understand the exposure before using a broad entry and use a strong, least-privilege database user.
+4. In Vercel Project → Settings → Environment Variables, add `MONGODB_URI` (Atlas connection string with database-user credentials) and `MONGODB_DB` (`portfolio`).
+5. Apply variables to Production and Preview as needed, then redeploy. Never place credentials in React code, commit them to GitHub, or paste them into the report.
+6. In Atlas Data Explorer, verify a test submission appears in `portfolio.contactMessages`.
+
+The API is in `api/contact.js`. It validates the form and stores a timestamp. It does not return database connection details to visitors. Use test data and do not submit other people's personal information without permission.
+
+## 2. Install and verify
 
 ```bash
 npm install
 npm run lint
 npm test
 npm run build
-``
+```
 
-Expected unit tests: the Home page renders the mission statement and featured-work section, and its About/Projects links point to the expected routes.
+Unit tests cover Home page content/navigation and Contact form success/error states.
 
-## 2. Run Cypress end-to-end tests
+## 3. Run Cypress end-to-end tests
 
-Install dependencies first, then start the production preview in one terminal:
+Build and start the preview in one terminal:
 
 ```bash
 npm run build
 npm run preview -- --host 127.0.0.1 --port 4173
-``
+```
 
-In a second terminal, run:
+In a second terminal, run `npm run test:e2e`. Cypress stubs the contact API, so E2E tests do not need real Atlas credentials. Cypress video recording and failure screenshots are configured in `cypress.config.js`. Capture actual passing test results for the report.
 
-```bash
-npm run test:e2e
-``
+## 4. Deployment and performance
 
-Cypress checks navigation from Home to Projects and submits the Contact form. Cypress video recording and failure screenshots are configured in `cypress.config.js`. Capture screenshots of the passing test results for the assignment report.
+The README lists the existing Vercel URL: https://amitabh-portfolio-nu.vercel.app. Confirm Vercel is connected to this GitHub repository, uses `npm run build`, and publishes `dist`. Vercel supports the `api/contact.js` serverless endpoint when deployed with its Node.js runtime. After adding environment variables, test the API and inspect Vercel logs.
 
-## 3. Performance review
+Run Lighthouse on the deployed URL and record the actual Performance, Accessibility, Best Practices, and SEO scores. Do not invent scores. Review mobile layout, console errors, image sizes, and production build output.
 
-The app is a static Vite site. Run a production build and inspect the generated files in `dist/`. Use Chrome DevTools Lighthouse on the deployed URL and record the actual Performance, Accessibility, Best Practices, and SEO scores. Do not invent scores. Review oversized images, unused assets, console errors, and mobile layout issues.
+## 5. CI/CD and evidence
 
-## 4. Cloud deployment
+The branch `assignment4/testing-deployment` contains the assignment changes. Wait for GitHub Actions checks, resolve any failures, then merge the pull request to `master`. Verify that Vercel deploys the new version. Capture real screenshots of unit tests, Cypress results/video, Lighthouse, the live URL, and before/after content for the Word report.
 
-The repository README lists the existing Vercel URL: https://amitabh-portfolio-nu.vercel.app. Open the URL and verify the pages and Contact form manually. In Vercel, confirm the project is connected to this GitHub repository, the build command is `npm run build`, and the output directory is `dist`. If the site does not redeploy automatically, inspect the Vercel deployment logs.
+## Important
 
-## 5. Branch and CI/CD evidence
-
-This work is being prepared on branch `assignment4/testing-deployment`. Review the changes, open a pull request to `master`, and merge it after checks pass. To demonstrate a later code change, make a small content update on a new branch, merge it through a pull request, then capture the deployed site before and after the deployment.
-
-## Important limitation
-
-The existing Contact form only displays a local confirmation message. It does not persist submissions to a database. A cloud NoSQL database requirement (for example, Firebase or MongoDB Atlas) is not complete until the database is configured with credentials/secrets and the application is connected to it. Never commit database passwords, API keys, or other secrets to GitHub.
+The MongoDB integration will not store messages until the Atlas database user, network access, and Vercel environment variables are configured. Keep the database secret in the serverless API environment, never in browser code.
