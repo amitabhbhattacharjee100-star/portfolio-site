@@ -20,6 +20,9 @@ function Home() {
           Hi, I&rsquo;m {personalInfo.fullName.split(' ')[0]} — I design and build software with purpose.
         </h1>
         <p className="hero-lead">{personalInfo.summary}</p>
+        <p className="hero-update">
+          I am currently expanding my full-stack development skills through hands-on work with React, Supabase, and automated testing.
+        </p>
 
         <div className="hero-actions">
           <Link to="/about" className="btn btn-primary">
