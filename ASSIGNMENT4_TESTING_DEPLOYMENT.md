@@ -1,48 +1,41 @@
-# COMP229 Assignment 4 — Testing and Deployment
+# COMP229 Assignment 4 Testing and Deployment
 
-## 1. MongoDB Atlas setup
+## Supabase contact database
 
-1. Create a MongoDB Atlas project and a database named `portfolio`.
-2. Create a database user with a strong password. Give it read/write access only to the `portfolio` database.
-3. Configure Atlas Network Access for the deployment. Prefer restricted trusted IP access where available. For Vercel serverless functions without a fixed outbound IP, Atlas may require an IP access-list entry that permits Vercel access; understand the exposure before using a broad entry and use a strong, least-privilege database user.
-4. In Vercel Project → Settings → Environment Variables, add `MONGODB_URI` (Atlas connection string with database-user credentials) and `MONGODB_DB` (`portfolio`).
-5. Apply variables to Production and Preview as needed, then redeploy. Never place credentials in React code, commit them to GitHub, or paste them into the report.
-6. In Atlas Data Explorer, verify a test submission appears in `portfolio.contactMessages`.
+The Contact form stores messages in Supabase. The SQL setup file is `supabase/assignment4_contact_messages.sql`; the table uses row level security and only grants anonymous users insert access. Public reads are disabled.
 
-The API is in `api/contact.js`. It validates the form and stores a timestamp. It does not return database connection details to visitors. Use test data and do not submit other people's personal information without permission.
+The Vercel project needs `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` in Production and Preview. Keep the key in server environment variables and do not use a service role key in the browser. Use only test data when verifying a submission.
 
-## 2. Install and verify
+After deployment, submit a clearly identified test message and verify that it appears in `public.assignment4_contact_messages`. Remove the test row when evidence collection is complete.
+
+## Unit and build checks
+
+Run:
 
 ```bash
-npm install
+npm install --legacy-peer-deps
 npm run lint
 npm test
 npm run build
 ```
 
-Unit tests cover Home page content/navigation and Contact form success/error states.
+Unit tests cover Home page content and navigation, plus Contact form success and error states.
 
-## 3. Run Cypress end-to-end tests
+## Cypress end-to-end checks
 
-Build and start the preview in one terminal:
+Build and start the preview:
 
 ```bash
 npm run build
 npm run preview -- --host 127.0.0.1 --port 4173
 ```
 
-In a second terminal, run `npm run test:e2e`. Cypress stubs the contact API, so E2E tests do not need real Atlas credentials. Cypress video recording and failure screenshots are configured in `cypress.config.js`. Capture actual passing test results for the report.
+In a second terminal run `npm run test:e2e`. The Cypress suite stubs the contact API, so it does not write to Supabase. Video recording and failure screenshots are enabled. GitHub Actions uploads those files as the `cypress-evidence` artifact.
 
-## 4. Deployment and performance
+## Deployment and performance
 
-The README lists the existing Vercel URL: https://amitabh-portfolio-nu.vercel.app. Confirm Vercel is connected to this GitHub repository, uses `npm run build`, and publishes `dist`. Vercel supports the `api/contact.js` serverless endpoint when deployed with its Node.js runtime. After adding environment variables, test the API and inspect Vercel logs.
+The Vercel production URL is [amitabh-portfolio-nu.vercel.app](https://amitabh-portfolio-nu.vercel.app). Verify the home page, each portfolio route, and `/api/health` or the contact endpoint after deployment. Record actual Lighthouse scores for Performance, Accessibility, Best Practices, and SEO; do not estimate them. Review mobile layout, browser console, image size, and the production build output.
 
-Run Lighthouse on the deployed URL and record the actual Performance, Accessibility, Best Practices, and SEO scores. Do not invent scores. Review mobile layout, console errors, image sizes, and production build output.
+## CI/CD evidence
 
-## 5. CI/CD and evidence
-
-The branch `assignment4/testing-deployment` contains the assignment changes. Wait for GitHub Actions checks, resolve any failures, then merge the pull request to `master`. Verify that Vercel deploys the new version. Capture real screenshots of unit tests, Cypress results/video, Lighthouse, the live URL, and before/after content for the Word report.
-
-## Important
-
-The MongoDB integration will not store messages until the Atlas database user, network access, and Vercel environment variables are configured. Keep the database secret in the serverless API environment, never in browser code.
+The update branch is `assignment4/supabase-contact`. The pull request to `master` runs lint, unit tests, production build, and Cypress. After those checks pass, merge the branch and confirm Vercel deploys the new commit. Capture before and after screenshots of the home page and include the GitHub Actions test results and Cypress recording in the submission report.
