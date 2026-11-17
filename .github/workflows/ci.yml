@@ -1,0 +1,46 @@
+name: Portfolio CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+      - name: Run lint
+        run: npm run lint
+      - name: Run unit tests
+        run: npm test
+      - name: Build production app
+        run: npm run build
+      - name: Run Cypress end-to-end tests
+        run: |
+          npm run dev -- --host 127.0.0.1 --port 4173 --strictPort > /tmp/portfolio-vite.log 2>&1 &
+          for attempt in {1..30}; do
+            if curl --silent --fail http://127.0.0.1:4173/ > /dev/null; then break; fi
+            sleep 2
+          done
+          curl --silent --fail http://127.0.0.1:4173/ > /dev/null
+          npx cypress run --browser chrome
+
+      - name: Upload Cypress video and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-evidence
+          path: |
+            cypress/videos/
+            cypress/screenshots/
+          if-no-files-found: ignore
+          retention-days: 14
