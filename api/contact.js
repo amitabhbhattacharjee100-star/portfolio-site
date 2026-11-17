@@ -20,12 +20,12 @@ export default async function handler(req, res) {
   if (!firstName || !lastName || !contactNumber || !email || !message) {
     return res.status(400).json({ error: 'Please complete every field.' });
   }
-  if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)) {
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return res.status(400).json({ error: 'Please enter a valid email address.' });
   }
   if (message.length < 5) return res.status(400).json({ error: 'Please enter a longer message.' });
 
-  const supabaseUrl = process.env.SUPABASE_URL?.replace(/\\/+$/, '');
+  const supabaseUrl = process.env.SUPABASE_URL?.replace(/\/+$/, '');
   const publishableKey = process.env.SUPABASE_PUBLISHABLE_KEY;
   if (!supabaseUrl || !publishableKey) {
     return res.status(503).json({ error: 'The contact service is not configured yet. Please try again later.' });
