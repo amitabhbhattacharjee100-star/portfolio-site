@@ -27,8 +27,8 @@ jobs:
       - name: Run Cypress end-to-end tests
         uses: cypress-io/github-action@v6
         with:
-          install-command: npm install --legacy-peer-deps
-          start: npm run preview -- --host 127.0.0.1 --port 4173
+          install: false
+          start: npm run dev -- --host 127.0.0.1 --port 4173 --strictPort
           wait-on: 'http://127.0.0.1:4173'
           browser: chrome
 
